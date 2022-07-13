@@ -1,0 +1,26 @@
+.toolbar {
+  padding: 8px 24px;
+}
+
+.toolbar > * + * {
+  margin-left: 4px;
+}
+
+.toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  border-radius: 4px;
+  color: #cdcdcd;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+
+  &[aria-checked="true"] {
+    color: #111111;
+  }
+}
