@@ -10,4 +10,5 @@ export const theme: EditorThemeClasses = {
     h5: styles.h5,
     h6: styles.h6,
   },
+  quote: styles.quote,
 };

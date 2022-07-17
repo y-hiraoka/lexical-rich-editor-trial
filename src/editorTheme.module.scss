@@ -1,23 +1,35 @@
 .h1 {
   font-size: 32px;
+  margin-bottom: 24px;
 }
 
 .h2 {
   font-size: 24px;
+  margin-bottom: 20px;
 }
 
 .h3 {
   font-size: 18px;
+  margin-bottom: 16px;
 }
 
 .h4 {
   font-size: 16px;
+  margin-bottom: 16px;
 }
 
 .h5 {
   font-size: 14px;
+  margin-bottom: 16px;
 }
 
 .h6 {
   font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.quote {
+  margin: 16px 0;
+  padding: 4px 16px;
+  border-left: 4px solid #dddddd;
 }
