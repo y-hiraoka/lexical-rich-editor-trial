@@ -4,11 +4,15 @@ import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import styles from "./Editor.module.scss";
+import { theme } from "./editorTheme";
+import { nodes } from "./nodes";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
   namespace: "MyEditor",
   onError: error => console.error(error),
+  nodes: nodes,
+  theme: theme,
 };
 
 export const Editor: FC = () => {
