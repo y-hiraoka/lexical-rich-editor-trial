@@ -11,4 +11,14 @@ export const theme: EditorThemeClasses = {
     h6: styles.h6,
   },
   quote: styles.quote,
+  list: {
+    ul: styles.ul,
+    ol: styles.ol,
+    listitem: styles.listitem,
+    nested: {
+      listitem: styles.nestedListItem,
+    },
+    listitemChecked: styles.listitemChecked,
+    listitemUnchecked: styles.listitemUnchecked,
+  },
 };

@@ -1,7 +1,9 @@
 import { ComponentProps, FC } from "react";
+import { CheckListPlugin } from "@lexical/react/LexicalCheckListPlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
 import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import styles from "./Editor.module.scss";
 import { theme } from "./editorTheme";
@@ -26,6 +28,8 @@ export const Editor: FC = () => {
         />
       </div>
       <HistoryPlugin />
+      <ListPlugin />
+      <CheckListPlugin />
     </LexicalComposer>
   );
 };
