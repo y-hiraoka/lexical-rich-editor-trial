@@ -1,9 +1,8 @@
 .toolbar {
   padding: 8px 24px;
-}
-
-.toolbar > * + * {
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .toolbar button {
@@ -23,4 +22,27 @@
   &[aria-checked="true"] {
     color: #111111;
   }
+}
+
+.select {
+  position: relative;
+}
+
+.select select {
+  cursor: pointer;
+  padding: 8px 32px 8px 8px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: #eeeeee;
+  }
+}
+
+.select svg {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+  color: #a0a0a0;
+  pointer-events: none;
 }

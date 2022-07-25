@@ -8,6 +8,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import styles from "./Editor.module.scss";
 import { theme } from "./editorTheme";
 import { nodes } from "./nodes";
+import { CodeHighlightPlugin } from "./plugins/CodeHighlightPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
@@ -30,6 +31,7 @@ export const Editor: FC = () => {
       <HistoryPlugin />
       <ListPlugin />
       <CheckListPlugin />
+      <CodeHighlightPlugin />
     </LexicalComposer>
   );
 };

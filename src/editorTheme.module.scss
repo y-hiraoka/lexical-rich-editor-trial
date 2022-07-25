@@ -94,3 +94,62 @@
     transform: rotate(-40deg);
   }
 }
+
+.code {
+  background-color: #f7fafb;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  display: block;
+  padding: 8px 8px 8px 52px;
+  line-height: 1.6;
+  font-size: 14px;
+  margin: 8px 0;
+  tab-size: 2;
+  /* white-space: pre; */
+  overflow-x: auto;
+  position: relative;
+
+  &::before {
+    content: attr(data-gutter);
+    color: #999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #d9dddf;
+    padding: 8px;
+    min-width: 32px;
+    height: 100%;
+    text-align: right;
+  }
+}
+
+.tokenComment {
+  color: slategray;
+}
+
+.tokenPunctuation {
+  color: #999;
+}
+
+.tokenProperty {
+  color: #905;
+}
+
+.tokenSelector {
+  color: #690;
+}
+
+.tokenOperator {
+  color: #9a6e3a;
+}
+
+.tokenAttr {
+  color: #07a;
+}
+
+.tokenVariable {
+  color: #e90;
+}
+
+.tokenFunction {
+  color: #dd4a68;
+}

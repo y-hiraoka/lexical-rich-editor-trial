@@ -1,5 +1,10 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import {
+  $createCodeNode,
+  $isCodeNode,
+  CODE_LANGUAGE_FRIENDLY_NAME_MAP,
+} from "@lexical/code";
+import {
   $isListNode,
   INSERT_CHECK_LIST_COMMAND,
   INSERT_ORDERED_LIST_COMMAND,
@@ -24,7 +29,10 @@ import {
   MdFormatListNumbered,
   MdFormatListBulleted,
   MdChecklist,
+  MdCode,
+  MdExpandMore,
 } from "react-icons/all";
+import { CODE_LANGUAGE_COMMAND } from "./CodeHighlightPlugin";
 import styles from "./ToolbarPlugin.module.scss";
 
 const SupportedBlockType = {
@@ -39,11 +47,17 @@ const SupportedBlockType = {
   number: "Numbered List",
   bullet: "Bulleted List",
   check: "Check List",
+  code: "Code Block",
 } as const;
 type BlockType = keyof typeof SupportedBlockType;
 
+const CodeLanguagesOptions = Object.entries(CODE_LANGUAGE_FRIENDLY_NAME_MAP).map(
+  ([value, label]) => ({ value, label }),
+);
+
 export const ToolbarPlugin: FC = () => {
   const [blockType, setBlockType] = useState<BlockType>("paragraph");
+  const [codeLanguage, setCodeLanguage] = useState("");
   const [editor] = useLexicalComposerContext();
 
   const formatHeading = useCallback(
@@ -89,6 +103,17 @@ export const ToolbarPlugin: FC = () => {
     }
   }, [blockType, editor]);
 
+  const formatCode = useCallback(() => {
+    if (blockType !== "code") {
+      editor.update(() => {
+        const selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          $wrapLeafNodesInElements(selection, () => $createCodeNode());
+        }
+      });
+    }
+  }, [blockType, editor]);
+
   useEffect(() => {
     return editor.registerUpdateListener(({ editorState }) => {
       editorState.read(() => {
@@ -101,8 +126,6 @@ export const ToolbarPlugin: FC = () => {
             ? anchorNode
             : anchorNode.getTopLevelElementOrThrow();
 
-        console.log(anchorNode.getType());
-
         if ($isHeadingNode(targetNode)) {
           const tag = targetNode.getTag();
           setBlockType(tag);
@@ -114,6 +137,10 @@ export const ToolbarPlugin: FC = () => {
 
           setBlockType(listType);
         } else {
+          if ($isCodeNode(targetNode)) {
+            setCodeLanguage(targetNode.getLanguage() || "");
+          }
+
           const nodeType = targetNode.getType();
           if (nodeType in SupportedBlockType) {
             setBlockType(nodeType as BlockType);
@@ -190,6 +217,33 @@ export const ToolbarPlugin: FC = () => {
         onClick={formatQuote}>
         <MdFormatQuote />
       </button>
+      <button
+        type="button"
+        role="checkbox"
+        title={SupportedBlockType["code"]}
+        aria-label={SupportedBlockType["code"]}
+        aria-checked={blockType === "code"}
+        onClick={formatCode}>
+        <MdCode />
+      </button>
+      {blockType === "code" && (
+        <div className={styles.select}>
+          <select
+            aria-label="code languages"
+            value={codeLanguage}
+            onChange={event =>
+              editor.dispatchCommand(CODE_LANGUAGE_COMMAND, event.target.value)
+            }>
+            <option value="">select...</option>
+            {CodeLanguagesOptions.map(item => (
+              <option key={item.value} value={item.value}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+          <MdExpandMore />
+        </div>
+      )}
     </div>
   );
 };
