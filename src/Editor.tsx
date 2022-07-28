@@ -8,6 +8,7 @@ import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import styles from "./Editor.module.scss";
 import { theme } from "./editorTheme";
 import { nodes } from "./nodes";
+import { AutoFocusPlugin } from "./plugins/AutoFocusPlugin";
 import { CodeHighlightPlugin } from "./plugins/CodeHighlightPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
@@ -28,6 +29,7 @@ export const Editor: FC = () => {
           placeholder={<div className={styles.placeholder}>いまなにしてる？</div>}
         />
       </div>
+      <AutoFocusPlugin />
       <HistoryPlugin />
       <ListPlugin />
       <CheckListPlugin />
