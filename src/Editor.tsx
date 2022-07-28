@@ -10,6 +10,7 @@ import { theme } from "./editorTheme";
 import { nodes } from "./nodes";
 import { AutoFocusPlugin } from "./plugins/AutoFocusPlugin";
 import { CodeHighlightPlugin } from "./plugins/CodeHighlightPlugin";
+import { InlineToolbarPlugin } from "./plugins/InlineToolbarPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
@@ -23,6 +24,7 @@ export const Editor: FC = () => {
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <ToolbarPlugin />
+      <InlineToolbarPlugin />
       <div className={styles.editorContainer}>
         <RichTextPlugin
           contentEditable={<ContentEditable className={styles.contentEditable} />}

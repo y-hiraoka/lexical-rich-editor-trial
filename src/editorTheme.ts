@@ -54,4 +54,14 @@ export const theme: EditorThemeClasses = {
     url: styles.tokenOperator,
     variable: styles.tokenVariable,
   },
+  text: {
+    bold: styles.textBold,
+    code: styles.textCode,
+    italic: styles.textItalic,
+    strikethrough: styles.textStrikethrough,
+    subscript: styles.textSubscript,
+    superscript: styles.textSuperscript,
+    underline: styles.textUnderline,
+    underlineStrikethrough: styles.textUnderlineStrikethrough,
+  },
 };

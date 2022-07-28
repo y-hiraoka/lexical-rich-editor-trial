@@ -153,3 +153,40 @@
 .tokenFunction {
   color: #dd4a68;
 }
+
+.textBold {
+  font-weight: bold;
+}
+
+.textCode {
+  background-color: #e8eced;
+  padding: 1px 0.25rem;
+  font-family: Menlo, Consolas, Monaco, monospace;
+  font-size: 94%;
+}
+
+.textItalic {
+  font-style: italic;
+}
+
+.textStrikethrough {
+  text-decoration: line-through;
+}
+
+.textSubscript {
+  font-size: 0.8em;
+  vertical-align: sub;
+}
+
+.textSuperscript {
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+.textUnderline {
+  text-decoration: underline;
+}
+
+.textUnderlineStrikethrough {
+  text-decoration: underline line-through;
+}
