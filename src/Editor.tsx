@@ -11,6 +11,7 @@ import { nodes } from "./nodes";
 import { AutoFocusPlugin } from "./plugins/AutoFocusPlugin";
 import { CodeHighlightPlugin } from "./plugins/CodeHighlightPlugin";
 import { InlineToolbarPlugin } from "./plugins/InlineToolbarPlugin";
+import { MarkdownPlugin } from "./plugins/MarkdownPlugin";
 import { ToolbarPlugin } from "./plugins/ToolbarPlugin";
 
 const initialConfig: ComponentProps<typeof LexicalComposer>["initialConfig"] = {
@@ -36,6 +37,7 @@ export const Editor: FC = () => {
       <ListPlugin />
       <CheckListPlugin />
       <CodeHighlightPlugin />
+      <MarkdownPlugin />
     </LexicalComposer>
   );
 };
